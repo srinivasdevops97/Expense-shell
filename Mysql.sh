@@ -3,8 +3,8 @@
 LOGS_FOLDER="/var/log/expense"
 SCRIPT_NAME=$(echo $0 | cut -d "." -f1)
 TIMESTAMP=$(date +%Y-%m-%d-%H-%M-%S)
-LOG_FILE="$LOGS_FLODER/$SCRIPT_NAME-$TIMESTAMP.log"
-mkdir -p $LOGS_FLODER
+LOG_FILE="$LOGS_FOLDER/$SCRIPT_NAME-$TIMESTAMP.log"
+mkdir -p $LOGS_FOLDER
 
 USERID=$(id -u)
 R="\e[31m"
@@ -34,14 +34,14 @@ echo "Script started executing at: $(date)" | tee -a $LOG_FILE
 
 CHECK_ROOT
 
-dnf install mysql-server -y $>>$LOG_FILE
+dnf install mysql-server -y &>>$LOG_FILE
 VALIDATE $? "Installing mysql-server"
 
-systemctl enable mysqld $>>$LOG_FILE
+systemctl enable mysqld &>>$LOG_FILE
 VALIDATE $? "Enabled MYSQL server"
 
-systemctl start mysqld $>>$LOG_FILE
+systemctl start mysqld &>>$LOG_FILE
 VALIDATE $? "Started Mysql server"
 
-mysql_secure_installation --set-root-pass ExpenseApp@1 $>>$LOG_FILE
+mysql_secure_installation --set-root-pass ExpenseApp@1 &>>$LOG_FILE
 VALIDATE $? "Setting up root password"
