@@ -1,4 +1,4 @@
-$!/bin/bash
+#!/bin/bash
 
 LOGS_FOLDER="/var/log/expense"
 SCRIPT_NAME=$(echo $0 | cut -d "." -f1)
@@ -23,19 +23,19 @@ CHECK_ROOT(){
 VALIDATE(){
     if [ $1 -ne 0 ]
     then
-        echo -e "$2 is ... $R FAILED $N" | tee -a $LOG_FILE
+        echo -e "$2 is... $R FAILED $N" | tee -a $LOG_FILE
         exit 1
     else
-        echo -e "$2 is ... $G SUCCESS $N" | tee -a $LOG_FILE
+        echo -e "$2 is... $G SUCCESS $N" | tee -a $LOG_FILE
+    fi
 }
 
-echo "script started executing at: $(date)" | tee -a $LOG_FILE
-
+echo "Script started executing at: $(date)" | tee -a $LOG_FILE
 
 CHECK_ROOT
 
 dnf module disable nodejs -y &>>$LOG_FILE
-VALIDATE $? "Diasbled default nodejs"
+VALIDATE $? "Diasble default nodejs"
 
 dnf module enable nodejs:22 -y &>>$LOG_FILE
 VALIDATE $? "Enable nodejs:22"
