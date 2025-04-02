@@ -1,5 +1,5 @@
 [Unit]
-Description = Backend Service
+Description = mysql.srinivas.fun
 
 [Service]
 User=expense
