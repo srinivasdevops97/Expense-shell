@@ -3,7 +3,7 @@ Description = mysql.srinivas.fun
 
 [Service]
 User=expense
-Environment=DB_HOST="backend.srinivas.fun"
+Environment=DB_HOST="mysql.srinivas.fun"
 ExecStart=/bin/node /app/index.js
 SyslogIdentifier=backend
 
