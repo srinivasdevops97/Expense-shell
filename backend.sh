@@ -35,7 +35,7 @@ echo "Script started executing at: $(date)" | tee -a $LOG_FILE
 CHECK_ROOT
 
 dnf module disable nodejs -y &>>$LOG_FILE
-VALIDATE $? "Diasble default nodejs"
+VALIDATE $? "Disable default nodejs"
 
 dnf module enable nodejs:22 -y &>>$LOG_FILE
 VALIDATE $? "Enable nodejs:22"
@@ -67,7 +67,7 @@ VALIDATE $? "Extracting backend application code"
 
 dnf install npm -y &>>$LOG_FILE
 VALIDATE $? "Installing npm"
-cp /home/ec2-user/expense-shell/backend.service.sh  /etc/systemd/system/backend.service
+cp /home/ec2-user/expense-shell/backend.service /etc/systemd/system/backend.service
 
 # load the data before running backend
 
