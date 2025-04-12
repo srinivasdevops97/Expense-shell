@@ -65,7 +65,7 @@ VALIDATE $? "Extracting backend application code"
 
 # create backend.service file
 
-dnf install npm -y &>>$LOG_FILE
+npm install -g npm@11.3.0 &>>$LOG_FILE
 VALIDATE $? "Installing npm"
 cp /home/ec2-user/expense-shell/backend.service /etc/systemd/system/backend.service
 
