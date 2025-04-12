@@ -62,11 +62,12 @@ cd /app
 rm -rf /app/* # remove the existing code
 unzip /tmp/backend.zip &>>$LOG_FILE
 VALIDATE $? "Extracting backend application code"
+pwd
 
 # create backend.service file
 
-npm install -g npm@latest &>>$LOG_FILE
-VALIDATE $? "Installing npm"
+#npm install -g npm@latest &>>$LOG_FILE
+#VALIDATE $? "Installing npm"
 # cp /home/ec2-user/expense-shell/backend.service /etc/systemd/system/backend.service
 
 # # load the data before running backend
